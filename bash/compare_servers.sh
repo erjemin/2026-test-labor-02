@@ -12,8 +12,8 @@ echo ""
 # Список серверов для тестирования
 # Формат: "Название|URL"
 servers=(
-    "Selectel 10MB|https://speedtest.selectel.ru/10MB"
-    "Selectel 100MB|https://speedtest.selectel.ru/100MB"
+    "GitCube|https://git.cube2.ru/erjemin/2026-test-labor-02"
+    "GitHub|https://github.com/erjemin/2026-test-labor-02"
 )
 
 # Переменные для отслеживания лучшего сервера
@@ -28,8 +28,8 @@ for server_info in "${servers[@]}"; do
     
     echo -n "Тестирую $name... "
     
-    # Запускаем тест в тихом режиме с 2 запросами для быстроты
-    speed=$(./speed_test.sh -q -n 2 "$url" 2>/dev/null)
+    # Запускаем тест в тихом режиме с 5 запросами
+    speed=$(bash speed_test.sh -q -n 5 "$url" 2>/dev/null)
     
     # Проверяем, успешно ли выполнен тест
     if [ $? -eq 0 ] && [ -n "$speed" ]; then
